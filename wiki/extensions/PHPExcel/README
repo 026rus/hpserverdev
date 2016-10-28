@@ -1,0 +1,6 @@
+REQUIREMENTS
+enable php extensions:
+* php_zip
+* php_xml
+* iconv 
+* php_gd2 (optional)

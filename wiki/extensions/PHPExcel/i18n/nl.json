@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"phpexcel-desc": "Container voor de [http://phpexcel.codeplex.com/ bibliotheek PHPExcel]"
+}

@@ -1,0 +1,12 @@
+*.png
+*.PNG
+*.tar
+*.gz
+*.zip
+*.gif
+*.jpg
+*.JPG
+*.wmv
+bakup/
+phpMyAdmin/
+

@@ -1,0 +1,8 @@
+{
+    "@metadata": {
+        "authors": [
+            "Kim Eik"
+        ]
+    },
+    "phpexcel-desc": "Container for the [http://phpexcel.codeplex.com/ PHPExcel library]"
+}

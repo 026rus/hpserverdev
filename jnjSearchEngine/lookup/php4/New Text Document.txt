@@ -1,0 +1,166 @@
+$Site
+$EnclosureName
+$EnclosureLink
+$VCAddress
+$EnclosureSN
+$OA1SN
+OA2SN
+$EnclosureModel	
+$EnclosureFirmware	
+$VCFirmware
+$TypeofVC	
+$EnclosureFirmwareCurrent
+$Comments
+$Server1
+$Server2
+$Server3
+$Server4
+$Server5
+$Server6
+$Server7
+$Server8
+$Server9
+$Server10
+$Server11
+$Server12
+$Server13
+$Server14
+$Server15
+$Server16
+$Modified
+$MoGridLocation	
+$GridLocation
+$ID	
+
+
+
+Site
+EnclosureName
+EnclosureLink
+VCAddress
+EnclosureSN
+OA1SN
+OA2SN
+EnclosureModel	
+EnclosureFirmware	
+VCFirmware
+TypeofVC	
+EnclosureFirmwareCurrent
+Comments
+Server1
+Server2
+Server3
+Server4
+Server5
+Server6
+Server7
+Server8
+Server9
+Server10
+Server11
+Server12
+Server13
+Server14
+Server15
+Server16
+Modified
+GridLocation	
+GridLocation
+GridLocation	
+
+
+
+
+
+
+$Site = mysql_real_escape_string(htmlspecialchars($_POST['Site']));
+
+$EnclosureName = mysql_real_escape_string(htmlspecialchars($_POST['EnclosureName']));
+
+$EnclosureLink = mysql_real_escape_string(htmlspecialchars($_POST['EnclosureLink']));
+
+$VCAddress = mysql_real_escape_string(htmlspecialchars($_POST['VCAddress']));
+
+$OA1SN = mysql_real_escape_string(htmlspecialchars($_POST['OA1SN']));
+
+$OA2SN = mysql_real_escape_string(htmlspecialchars($_POST['OA2SN']));
+
+$EnclosureModel = mysql_real_escape_string(htmlspecialchars($_POST['EnclosureModel']));
+
+$EnclosureFirmware = mysql_real_escape_string(htmlspecialchars($_POST['EnclosureFirmware']));
+
+$VCFirmware = mysql_real_escape_string(htmlspecialchars($_POST['VCFirmware']));
+
+$TypeofVC = mysql_real_escape_string(htmlspecialchars($_POST['TypeofVC']));
+
+$EnclosureFirmwareCurrent = mysql_real_escape_string(htmlspecialchars($_POST['EnclosureFirmwareCurrent']));
+
+$Comments = mysql_real_escape_string(htmlspecialchars($_POST['Comments']));
+
+$Server1 = mysql_real_escape_string(htmlspecialchars($_POST['Server1']));
+
+$Server2 = mysql_real_escape_string(htmlspecialchars($_POST['Server2']));
+
+$Server3 = mysql_real_escape_string(htmlspecialchars($_POST['Server3']));
+
+$Server4 = mysql_real_escape_string(htmlspecialchars($_POST['Server4']));
+
+$Server5 = mysql_real_escape_string(htmlspecialchars($_POST['Server5']));
+
+$Server6 = mysql_real_escape_string(htmlspecialchars($_POST['Server6']));
+
+$Server7 = mysql_real_escape_string(htmlspecialchars($_POST['Server7']));
+
+$Server8 = mysql_real_escape_string(htmlspecialchars($_POST['Server8']));
+
+$Server10 = mysql_real_escape_string(htmlspecialchars($_POST['Server10']));
+
+$Server11 = mysql_real_escape_string(htmlspecialchars($_POST['Server11']));
+
+$Server12 = mysql_real_escape_string(htmlspecialchars($_POST['Server12']));
+
+$Server13 = mysql_real_escape_string(htmlspecialchars($_POST['Server13']));
+
+$Server14 = mysql_real_escape_string(htmlspecialchars($_POST['Server14']));
+
+$Server15 = mysql_real_escape_string(htmlspecialchars($_POST['Server15']));
+
+$Server16 = mysql_real_escape_string(htmlspecialchars($_POST['Server16']));
+
+$Modified = mysql_real_escape_string(htmlspecialchars($_POST['Modified']));
+
+$ModifiedBy = mysql_real_escape_string(htmlspecialchars($_POST['ModifiedBy']));
+
+$GridLocation = mysql_real_escape_string(htmlspecialchars($_POST['GridLocation']));
+
+$GridLocation = mysql_real_escape_string(htmlspecialchars($_POST['GridLocation']));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
