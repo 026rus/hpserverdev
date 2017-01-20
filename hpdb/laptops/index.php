@@ -2,6 +2,7 @@
 //For developing only !
 error_reporting(E_ALL);
 ini_set("display_errors", TRUE);
+var_dump($_REQUEST);
 
 // open connction with MySQL server Kiosk.
 include_once('connect-db.php');

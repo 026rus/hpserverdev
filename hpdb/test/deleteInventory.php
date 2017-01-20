@@ -1,6 +1,6 @@
  <html>
  <head>
- <title>Edit Record</title>
+ <title>Delete Inventory Record</title>
  <style>
  header
  {
@@ -24,6 +24,7 @@ td
 <body>
 <form action="" method="post">
 <?php
+
 if (isset($_GET['id']))
 {
     if (is_numeric($_GET['id']))
@@ -31,8 +32,8 @@ if (isset($_GET['id']))
         include('connect-db.php');
         $id = $_GET['id'];     
         $sql  = "SELECT *";
-        $sql .= " FROM employee";
-        $sql .= " WHERE id=" . $id;
+        $sql .= " FROM inventory";
+        $sql .= " WHERE inventory_id=" . $id;
 
         $result = mysql_query($sql, $connection);
         if (!$result)
@@ -48,14 +49,11 @@ if (isset($_GET['id']))
         {
 
             // get data from db
-            $first_name     = $row['first_name'];
-            $middle_name    = $row['middle_name'];
-            $last_name      = $row['last_name'];
-            $email          = $row['email'];
-            $gender         = $row['gender'];
-            $locations      = $row['locations'];
-            $project        = $row['project'];
-            $id             = $row['id'];
+            $tag			= $row['tag'];
+            $equipment		= $row['equipment'];
+            $employee		= $row['employee'];
+            $cubicle		= $row['cubicle'];
+            $id             = $row['inventory_id'];
         }
         else
         // if no match, display result
@@ -73,10 +71,7 @@ if (isset($_GET['id']))
  <p></p></td>
 </tr>
 <tr><th align ="center" colspan='2'>
-<p>Are you sure you want to delete this record: 
-			<?php echo $first_name; if ($middle_name != "" )  
-				  echo ", " . $middle_name;
-           		  echo $last_name . ", " . $email . $gender . $locations . $project; ?> </p>
+<p>Are you sure you want to delete this record: <?= $tag ?> </p>
 </th></tr>
 <?php
         mysql_close($connection);
@@ -84,7 +79,7 @@ if (isset($_GET['id']))
 }
 if (isset($_POST['cancel']))
 {
-    header("Location: showEmployees.php");
+    header("Location: inventory.php");
 }
 
 
@@ -95,12 +90,12 @@ if(isset($_POST['delete']))
     {
         include('connect-db.php');
         $id = $_POST['id'];
-        mysql_query("DELETE FROM employee WHERE id='$id'")
+        mysql_query("DELETE FROM inventory WHERE inventory_id='$id'")
         or die(mysql_error());
         
         mysql_close($connection);
 
-        header("Location: showEmployees.php");
+        header("Location: inventory.php");
     }
 }
 

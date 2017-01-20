@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", TRUE);
 var_dump($_REQUEST);
 
-function getdata()
+function confremDelete()
 {
 	$id=null;
 	$TAG=null;
@@ -39,17 +39,16 @@ function getdata()
  <div>
  <table align="center" border='1'>
  <tr>
- <td align="right"><strong>TAG </strong></td><td align="left"> <input type="text" style="width: 300px;" name="tag" value="<?=$TAG?>"><br/></td>
+	<td colspan='2' align="center"><b><h1><p style="color:#FF0000";>Are you sure you want to delete this item</p></h1></b></td>
+ </tr>
+ <tr>
+ <td align="right"><strong>TAG </strong></td><td align="left"> <?=$TAG?> <br/></td>
  </tr> <tr>
 <?php
-	// echo "@ " . $id . "|" ;
-	// echo "@ " . $TAG . "|" ;
-	// echo "@ " . $EMPLOYEEID . "|" ;
-	// echo "@ " . $NOTES . "|" ;
     // drop down for select employee
     $sql  = "select id, first_name, middle_name, last_name";
     $sql .= " from employee";
-    $sql .= " order by first_name, last_name";
+    $sql .= " where id=$EMPLOYEEID";
 
     $result = mysql_query($sql, $connection);
     if (!$result)
@@ -59,9 +58,7 @@ function getdata()
         exit;
     }
 
-    echo '<td align="right"><strong>Employee</strong></td><td align="left">';
-    echo '<select name="employee">'; 
-    echo '<option value="0">Please Select One</option>'; 
+    echo '<td align="right"><strong>Assigned to employee</strong></td><td align="left">';
     while ( $row = mysql_fetch_assoc($result) )
     {
 
@@ -70,14 +67,12 @@ function getdata()
 
         if ($row['middle_name'] != "") $middle_name = "  ". $row['middle_name'];
         if ($row['last_name'] != "") $last_name = "  ". $row['last_name'];
-        echo "<option ";
-		if ($row['id'] == $EMPLOYEEID) echo " selected ";
-        echo "value=\"" . $row['id'] . "\">" . $row['first_name'] . $middle_name . $last_name . "</option>\n";
+        echo $row['first_name'] . $middle_name . $last_name . "\n";
     }
-    echo "</select>";
+    echo "";
 ?>
 </tr> <tr>
-<td align="right"><strong>Notes </strong></td><td><textarea name="notes" style="width: 300px; height: 150px;"><?=$NOTES?></textarea></td>
+<td align="left" colspan="2" height="100"><?=$NOTES?></textarea></td>
 </tr>
  </table>
 
@@ -85,9 +80,8 @@ function getdata()
  <tr>
  <td align ="center">
  <p></p></td>
- <td align="center"> <input type="submit" name="submit" value="submit"></td>
- <td align="center"> <input type="submit" name="cancel" value="cancel"></td>
- <td align="center"> <input type="submit" name="delete" value="delete"></td>
+ <td align="center"> <input type="submit" name="YES" value="YES"></td>
+ <td align="center"> <input type="submit" name="NO" value="NO"></td>
  </tr>
  </table>
  </div>
@@ -96,7 +90,7 @@ function getdata()
 	mysql_free_result($result);
 	mysql_close($connection);
 }
-function edditlaptop()
+function deleteLaptop()
 {
 	include_once('connect-db.php');
 
@@ -108,56 +102,33 @@ function edditlaptop()
 	
 	
 	// check that firstname/lastname fields are both filled in
-	if ($tag == '')
-	{
-	    // generate error message
-	    $error = 'ERROR: Please fill the TAG required fields!';
+	// save the data to the database
+	// UPDATE `kiosk`.`laptops` SET `empoyee_id` = '83' WHERE `laptops`.`id` = 62;
+	$sql = "DELETE FROM laptops WHERE id=$id";
+
+	mysql_query($sql)
+	or die(mysql_error());
+	// once delete, redirect back to the view page
+	// 
+	header("Location: index.php");
 	
-	    //error, display form
-	}
-	else
-	{
-	    // save the data to the database
-		// UPDATE `kiosk`.`laptops` SET `empoyee_id` = '83' WHERE `laptops`.`id` = 62;
-		echo "<br>\n";
-		$sql = "UPDATE laptops SET tag=\"$tag\", empoyee_id=$employee, notes=\"$notes\" WHERE id=$id";
-		echo $sql . "<br>\n";
-	    mysql_query($sql)
-	    or die(mysql_error());
-	
-	    // once saved, redirect back to the view page
-	    header("Location: index.php");
-	}
-	mysql_close($connection);
 }
 // delete laptop by id
-function delLaptop()
+if (isset($_POST['YES']))
 {
-	include_once('connect-db.php');
-
-	// get form data, making sure it is valid
-	$id         = mysql_real_escape_string(htmlspecialchars($_POST['id']));
-	$tag        = mysql_real_escape_string(htmlspecialchars($_POST['tag']));
-	$employee   = mysql_real_escape_string(htmlspecialchars($_POST['employee']));
-	$notes      = mysql_real_escape_string(htmlspecialchars($_POST['notes']));
-	
-	mysql_close($connection);
-	header("Location: delLaptop.php?id=$id");
+	deleteLaptop();
 }
-
-// check if it wos added! 
-if (isset($_POST['submit']))
+else if (isset($_POST['NO']))
 {
-	edditlaptop();
-}
-else if (isset($_POST['cancel']))
-{
-	// once saved, redirect back to the view page
 	header("Location: index.php");
-}
-else if (isset($_POST['delete']))
-{
-	delLaptop();
+	// if (isset($_GET['edte']))
+	// {
+	// 	header("Location: edtEmployee.php");
+	// }
+	// else
+	// {
+	// 	header("Location: index.php");
+	// }
 }
 else
 {
@@ -165,7 +136,7 @@ else
 
 <html>
 <head>
-<title>Edint Laptop</title>
+<title>Delete Laptop</title>
 
 <link rel="stylesheet" type="text/css" href="style.css"/>
 
@@ -180,7 +151,7 @@ else
 </header>
 
 <body>
-<?php getdata(); ?>
+<?php confremDelete(); ?>
 </body>
 </html>
 <?php
